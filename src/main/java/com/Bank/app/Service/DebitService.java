@@ -34,8 +34,8 @@ public class DebitService implements IDebitService {
         TblAccount tblAccount = accountRepository.findByAccountNo(debit.getAccountNo());
         BigDecimal totalAmount = tblAccount.getAmount().subtract(debit.getDebitAmount());
         BigDecimal DebitLimit = new BigDecimal(10000);
-        if (debit.getDebitAmount().compareTo(DebitLimit) > 0) {
-            return new ResponseEntity<>("Debit amount exceeds", HttpStatus.OK);
+        if (debit.getDebitAmount().compareTo(DebitLimit) > 0|| debit.getDebitAmount().compareTo(BigDecimal.ZERO)<0) {
+            return new ResponseEntity<>("Debit amount can't be Zero or more than 10,000.00", HttpStatus.OK);
         }
         if (totalAmount.compareTo(BigDecimal.ZERO) < 0) {
             return new ResponseEntity<>("Insufficient Amount", HttpStatus.BAD_REQUEST);

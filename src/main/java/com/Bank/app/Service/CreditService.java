@@ -31,8 +31,9 @@ public class CreditService implements ICreditService {
         TblAccount tblAccount = accountRepository.findByAccountNo(credit.getAccountNo());
         BigDecimal totalAmount = tblAccount.getAmount().add(credit.getCreditAmount());
         BigDecimal creditLimit= new BigDecimal("10000");
-        if(credit.getCreditAmount().compareTo(creditLimit)>0){
-            return new ResponseEntity<>("Credit amount exceeds the limit", HttpStatus.OK);
+        BigDecimal creditLimit2= new BigDecimal("0");
+        if(credit.getCreditAmount().compareTo(creditLimit) > 0 || credit.getCreditAmount().compareTo(creditLimit2)<0){
+            return new ResponseEntity<>("Credit amount can't be Zero or more than 10,000.00", HttpStatus.OK);
         }
         if (totalAmount.compareTo(BigDecimal.ZERO) < 0) {
             return new ResponseEntity<>("insufficient Amount", HttpStatus.OK);
