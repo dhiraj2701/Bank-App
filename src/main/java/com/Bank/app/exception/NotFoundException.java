@@ -2,7 +2,7 @@ package com.Bank.app.exception;
 
 import java.io.Serial;
 
-public class NotFoundException extends Exception {
+public class NotFoundException extends RuntimeException {
     @Serial
     private static final long serialVersionUID = 7992904489502842099L;
 

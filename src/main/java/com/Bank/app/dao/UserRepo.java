@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.math.BigInteger;
 
 public interface UserRepo extends JpaRepository<TblUser, BigInteger> {
+    TblUser findByUserName(String userName);
 }

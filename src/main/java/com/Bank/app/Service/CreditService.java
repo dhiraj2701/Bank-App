@@ -1,13 +1,11 @@
 package com.Bank.app.Service;
 
-import com.Bank.app.exception.NotFoundException;
 import com.Bank.app.model.Credit;
 import com.Bank.app.Entity.TblCredit;
 import com.Bank.app.Entity.TblAccount;
 import jakarta.transaction.Transactional;
 import com.Bank.app.dao.CreditRepository;
 import com.Bank.app.dao.AccountRepository;
-import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import com.Bank.app.Entity.TblTransactions;
 import com.Bank.app.dao.TransactionRepository;
@@ -16,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 @Service

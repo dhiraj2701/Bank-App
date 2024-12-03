@@ -14,10 +14,18 @@ public class UserService implements IUserService {
     private UserRepo userRepo;
     @Override
     public ResponseEntity<?> createUser(User user) {
+        TblUser userExistence=userRepo.findByUserName(user.getUserName());
+        if(userExistence!=null){
+            return new ResponseEntity<>("User Already Exist",HttpStatus.OK);
+        }
+        if(user.getUserName()==null){
+            return new ResponseEntity<>("adminId can't be null",HttpStatus.OK);
+        }
         TblUser tblUser=TblUser.builder()
                 .userName(user.getUserName())
                 .fullName(user.getFullName())
                 .isAdminUser(true)
+                .isGroupUser(false)
                 .build();
         userRepo.save(tblUser);
         return new ResponseEntity<>(tblUser,HttpStatus.OK);

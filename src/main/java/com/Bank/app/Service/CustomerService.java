@@ -1,5 +1,7 @@
 package com.Bank.app.Service;
 
+import com.Bank.app.Entity.TblUser;
+import com.Bank.app.exception.NotFoundException;
 import com.Bank.app.model.Customer;
 import com.Bank.app.Entity.TblAccount;
 import com.Bank.app.Entity.TblCustomer;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -23,6 +26,10 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public ResponseEntity<?> createCustomer(Customer customer) {
+        TblAccount account=accountRepository.findByAccountNo(customer.getTblAccount().getAccountNo());
+        if(account != null){
+            return new ResponseEntity<>("Account already exist",HttpStatus.OK);
+        }
         TblAccount tblAccount = TblAccount.builder()
                 .openingDate(customer.getTblAccount().getOpeningDate())
                 .amount(customer.getTblAccount().getAmount())

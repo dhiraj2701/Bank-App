@@ -21,4 +21,6 @@ public class TblUser {
     private String userName;
     private String fullName;
     private boolean isAdminUser;
+    private boolean isGroupUser;
+
 }
