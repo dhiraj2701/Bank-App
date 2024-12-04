@@ -15,15 +15,17 @@ public class AccountController {
     private IAccountService iAccountService;
 
     @PostMapping(value = "update")
-    public ResponseEntity<?> updateCustomer(@RequestBody Account account){
+    public ResponseEntity<?> updateCustomer(@RequestBody Account account) {
         return iAccountService.updateCustomer(account);
     }
+
     @GetMapping("account-search")
-    public ResponseEntity<?> getAllAccount(){
+    public ResponseEntity<?> getAllAccount() {
         return iAccountService.getAllAccount();
     }
+
     @GetMapping("account-by-id")
-    public ResponseEntity<?> getByAccountId(@RequestHeader("id") BigInteger id){
+    public ResponseEntity<?> getByAccountId(@RequestHeader("id") BigInteger id) {
         return iAccountService.getByAccountId(id);
     }
 }

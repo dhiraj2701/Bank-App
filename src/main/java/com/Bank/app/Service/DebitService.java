@@ -1,7 +1,7 @@
 package com.Bank.app.Service;
 
-import com.Bank.app.dao.TransRepo;
 import com.Bank.app.model.Debit;
+import com.Bank.app.dao.TransRepo;
 import com.Bank.app.Entity.TblDebit;
 import com.Bank.app.Entity.TblAccount;
 import com.Bank.app.dao.DebitRepository;
@@ -34,7 +34,7 @@ public class DebitService implements IDebitService {
         TblAccount tblAccount = accountRepository.findByAccountNo(debit.getAccountNo());
         BigDecimal totalAmount = tblAccount.getAmount().subtract(debit.getDebitAmount());
         BigDecimal DebitLimit = new BigDecimal(10000);
-        if (debit.getDebitAmount().compareTo(DebitLimit) > 0|| debit.getDebitAmount().compareTo(BigDecimal.ZERO)<0) {
+        if (debit.getDebitAmount().compareTo(DebitLimit) > 0 || debit.getDebitAmount().compareTo(BigDecimal.ZERO) < 0) {
             return new ResponseEntity<>("Debit amount can't be Zero or more than 10,000.00", HttpStatus.OK);
         }
         if (totalAmount.compareTo(BigDecimal.ZERO) < 0) {
@@ -45,6 +45,7 @@ public class DebitService implements IDebitService {
         TblDebit tblDebit = TblDebit.builder()
                 .accountNo(debit.getAccountNo())
                 .debitAmount(debit.getDebitAmount())
+                .debitDate(LocalDateTime.now())
                 .tblAccount(tblAccount)
                 .build();
         debitRepository.save(tblDebit);

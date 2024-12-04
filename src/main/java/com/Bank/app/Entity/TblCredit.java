@@ -1,13 +1,12 @@
 package com.Bank.app.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -34,6 +33,6 @@ public class TblCredit {
     private TblAccount tblAccount;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "Credited")
+    @OneToOne(mappedBy = "Credited", cascade = CascadeType.ALL)
     private TblTransactions tblTransactions;
 }

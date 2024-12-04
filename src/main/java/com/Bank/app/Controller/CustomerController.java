@@ -33,4 +33,9 @@ public class CustomerController {
     public ResponseEntity<?> deleteCustomerById(@PathVariable("id") BigInteger id) {
         return iCustomerService.deleteCustomerById(id);
     }
+
+    @PostMapping("update")
+    public ResponseEntity<?> updateCustomerById(@RequestBody Customer customer) {
+        return iCustomerService.updateCustomerById(customer);
+    }
 }

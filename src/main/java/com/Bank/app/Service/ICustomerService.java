@@ -13,4 +13,6 @@ public interface ICustomerService {
     ResponseEntity<?> getAllCustomers();
 
     ResponseEntity<?> deleteCustomerById(BigInteger id);
+
+    ResponseEntity<?> updateCustomerById(Customer customer);
 }

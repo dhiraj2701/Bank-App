@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -23,8 +22,14 @@ public class Transactions {
     private BigInteger creditId;
     private TblDebit debited;
     private TblCredit credited;
-    private Integer pageNo=0;
-    private Integer pageSize=10;
-    private void setPageNo(Integer pageNo){this.pageNo=pageNo;}
-    private void setPageSize(Integer pageSize){this.pageSize=pageSize;}
+    private Integer pageNo = 0;
+    private Integer pageSize = 10;
+
+    private void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
+    }
+
+    private void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
+    }
 }

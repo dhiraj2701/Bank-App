@@ -1,16 +1,16 @@
 package com.Bank.app.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -25,13 +25,14 @@ public class TblDebit {
     private BigInteger id;
     private BigInteger accountNo;
     private BigDecimal debitAmount;
+    private LocalDateTime debitDate;
 
     @OneToOne
-    @JoinColumn(name = "id",insertable = false,updatable = false)
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     @JsonIgnore
     private TblAccount tblAccount;
 
     @JsonIgnore
-    @OneToOne(mappedBy ="Debited")
+    @OneToOne(mappedBy = "Debited", cascade = CascadeType.ALL)
     private TblTransactions tblTransactions;
 }

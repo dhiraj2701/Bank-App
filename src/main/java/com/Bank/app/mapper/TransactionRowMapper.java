@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class TransactionRowMapper implements RowMapper<TransactionResponse> {
     @Override
     public TransactionResponse mapRow(ResultSet rs, int rowNum) throws SQLException {
-        TransactionResponse transactionResponse=new TransactionResponse();
+        TransactionResponse transactionResponse = new TransactionResponse();
 
         transactionResponse.setId(BigInteger.valueOf(rs.getInt("id")));
         transactionResponse.setAmount(BigDecimal.valueOf(rs.getInt("amount")));

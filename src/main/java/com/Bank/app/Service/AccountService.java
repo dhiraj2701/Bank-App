@@ -28,13 +28,13 @@ public class AccountService implements IAccountService {
 
     @Override
     public ResponseEntity<?> getAllAccount() {
-        List<TblAccount> tblAccountList=accountRepository.findAll();
-        return new ResponseEntity<>(tblAccountList,HttpStatus.OK);
+        List<TblAccount> tblAccountList = accountRepository.findAll();
+        return new ResponseEntity<>(tblAccountList, HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> getByAccountId(BigInteger id) {
-        TblAccount tblAccount=accountRepository.findById(id).orElseThrow();
-        return new ResponseEntity<>(tblAccount,HttpStatus.OK);
+        TblAccount tblAccount = accountRepository.findById(id).orElseThrow();
+        return new ResponseEntity<>(tblAccount, HttpStatus.OK);
     }
 }

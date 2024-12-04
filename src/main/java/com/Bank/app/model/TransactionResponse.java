@@ -1,11 +1,9 @@
 package com.Bank.app.model;
 
-import com.Bank.app.Entity.TblCredit;
-import com.Bank.app.Entity.TblDebit;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

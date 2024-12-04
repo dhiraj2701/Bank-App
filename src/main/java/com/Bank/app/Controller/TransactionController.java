@@ -16,7 +16,14 @@ public class TransactionController {
 
     @PostMapping("transaction-search")
     public ResponseEntity<?> getAllTransaction(@RequestBody Transactions transactions,
-                                               @RequestParam(value="userId") BigInteger id){
-        return iTransactionService.getAllTransaction(transactions,id);
+                                               @RequestHeader(value = "admin") BigInteger admin,
+                                               @RequestParam(value = "user", required = false) BigInteger user) {
+        return iTransactionService.getAllTransaction(transactions, admin, user);
+    }
+
+    @PostMapping(value = "delete")
+    public ResponseEntity<?> deleteTransactionById(@RequestParam(value = "id") BigInteger id,
+                                                   @RequestHeader("userId") BigInteger userId) {
+        return iTransactionService.deleteTransactionById(id, userId);
     }
 }

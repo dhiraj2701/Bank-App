@@ -2,12 +2,11 @@ package com.Bank.app.Entity;
 
 import java.math.BigInteger;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Builder;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
 @Entity
